@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 import ContactForm from "./ContactForm/ContactForm";
 import ContactList from "./ContactList/ContactList";
 import Filter from "./Filter/Filter";
@@ -15,7 +16,7 @@ class App extends React.Component {
       return false;
     }
     this.setState((prev) => ({
-      contacts: [...prev.contacts, { id: name, name, number }],
+      contacts: [...prev.contacts, { id: uuidv4(), name, number }],
     }));
     return true;
   };
