@@ -54,6 +54,26 @@ class App extends React.Component {
       </div>
     );
   }
+
+  constructor() {
+    super();
+    const localText = localStorage.getItem("contacts");
+    if (!localText) return;
+
+    try {
+      const localContacts = JSON.parse(localText);
+      if (!Array.isArray(localContacts)) throw new Error();
+      this.state.contacts = localContacts;
+    } catch {
+      alert(
+        "Your LocalStorage data for this site is corrupted. You may try to access and repair it manually using your browser's DevTools and then reload this page. As for now your contact list cannot be shown."
+      );
+    }
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
+  }
 }
 
 export default App;
