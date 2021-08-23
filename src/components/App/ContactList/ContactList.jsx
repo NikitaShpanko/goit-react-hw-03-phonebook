@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const ContactList = ({ contacts, onDelete }) => {
   const handleDelete = (e) => {
     onDelete(e.target.id);
@@ -14,6 +16,17 @@ const ContactList = ({ contacts, onDelete }) => {
       ))}
     </ul>
   );
+};
+
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      number: PropTypes.string,
+    })
+  ),
+  onDelete: PropTypes.func,
 };
 
 export default ContactList;

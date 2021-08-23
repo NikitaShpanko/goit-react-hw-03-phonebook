@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 class ContactForm extends React.Component {
   state = {
@@ -46,5 +47,7 @@ class ContactForm extends React.Component {
     );
   }
 }
+
+ContactForm.propTypes = { onSubmit: PropTypes.func };
 
 export default ContactForm;
