@@ -4,7 +4,7 @@ const ContactList = ({ contacts, onDelete }) => {
   const handleDelete = (e) => {
     onDelete(e.target.id);
   };
-  return (
+  return contacts.length ? (
     <ul>
       {contacts.map(({ id, name, number }) => (
         <li key={id}>
@@ -15,6 +15,8 @@ const ContactList = ({ contacts, onDelete }) => {
         </li>
       ))}
     </ul>
+  ) : (
+    <p>No contacts found.</p>
   );
 };
 
